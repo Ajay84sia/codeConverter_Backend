@@ -18,7 +18,7 @@ app.post('/convert', async (req, res) => {
         const { code, language } = req.body;
 
         const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-            prompt: `Convert this ${code} in ${language} language`,
+            prompt: `Convert the ${code} in ${language} language`,
             max_tokens: 100,
             temperature: 0.7,
             n: 1
@@ -43,7 +43,7 @@ app.post('/quality', async (req, res) => {
     try {
         const { code } = req.body;
         const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-            prompt: `Perform quality check for this ${code} that is it implemented correctly or not`,
+            prompt: `Do a quality check the following code:\n ${code}`,
             max_tokens: 100,
             temperature: 0.7,
             n: 1
@@ -67,7 +67,7 @@ app.post('/debug', async (req, res) => {
     try {
         const { code } = req.body;
         const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-            prompt: `Debug this ${code}`,
+            prompt: `Debug the following code:\n ${code}`,
             max_tokens: 100,
             temperature: 0.7,
             n: 1
